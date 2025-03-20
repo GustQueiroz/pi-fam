@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "Product" ADD COLUMN     "cost" DOUBLE PRECISION NOT NULL DEFAULT 0,
+ADD COLUMN     "image" TEXT,
+ADD COLUMN     "price" DOUBLE PRECISION NOT NULL DEFAULT 0;
+
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "photo" TEXT;
