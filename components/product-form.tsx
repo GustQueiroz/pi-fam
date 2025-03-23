@@ -18,6 +18,8 @@ export function ProductForm({ tenantId }: ProductFormProps) {
   const router = useRouter();
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [custo, setCusto] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,11 +30,15 @@ export function ProductForm({ tenantId }: ProductFormProps) {
       await createProduct({
         name,
         quantity,
+        price,
+        custo,
         tenantId,
       });
 
       setName("");
       setQuantity(0);
+      setPrice(0);
+      setCusto(0);
       router.refresh();
     } catch (error) {
       console.error("Erro ao criar produto:", error);
@@ -67,6 +73,26 @@ export function ProductForm({ tenantId }: ProductFormProps) {
                 min="0"
                 value={quantity}
                 onChange={(e) => setQuantity(Number.parseInt(e.target.value))}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="price">Preço</Label>
+              <Input
+                id="price"
+                type="number"
+                min="0"
+                value={price}
+                onChange={(e) => setPrice(Number.parseInt(e.target.value))}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="custo">Custo</Label>
+              <Input
+                id="custo"
+                type="number"
+                min="0"
+                value={custo}
+                onChange={(e) => setCusto(Number.parseInt(e.target.value))}
               />
             </div>
           </div>
